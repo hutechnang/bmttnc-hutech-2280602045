@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Chủ Mã Hóa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            max-width: 200px; /* Điều chỉnh kích thước logo nếu cần */
+            height: auto;
+        }
+        .title-container {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #dc3545; /* Màu đỏ tương tự như trong logo */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5" style="max-width: 600px;">
+        <div class="logo-container">
+            <img src="/static/logo-hutech-1.png" alt="HUTECH Logo"> <!-- Thay 'hutech_logo.png' bằng đường dẫn thực tế của logo -->
+        </div>
+        <div class="title-container">
+            BÀI THỰC HÀNH BẢO MẬT THÔNG TIN NÂNG CAO
+        </div>
+        <h2 class="text-center mb-4">Các Kiểu Mã Hóa Có Sẵn</h2>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="/caesar" class="text-decoration-none">🔐 Mã Caesar</a></li>
+            <li class="list-group-item"><a href="/vigenere" class="text-decoration-none">🔑 Mã Vigenère</a></li>
+            <li class="list-group-item"><a href="/railfence" class="text-decoration-none">📐 Mã Rail Fence</a></li>
+            <li class="list-group-item"><a href="/playfair" class="text-decoration-none">🗝️ Mã Playfair</a></li>
+            <li class="list-group-item"><a href="/transposition" class="text-decoration-none">📊 Mã Transposition</a></li>
+        </ul>
+    </div>
+</body>
+</html>

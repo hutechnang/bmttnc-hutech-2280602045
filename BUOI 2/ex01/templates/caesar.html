@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <title>Mã hóa Caesar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script>
+        async function encryptCaesar() {
+            const plainText = document.getElementById("plain_text").value;
+            const key = document.getElementById("key").value;
+            if (!plainText || !key) {
+                alert("Vui lòng nhập văn bản và khóa!");
+                return;
+            }
+            try {
+                const response = await fetch("/api/caesar/encrypt", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ plain_text: plainText, key: key }),
+                });
+                const data = await response.json();
+                document.getElementById("output_text").value = data.encrypted_message;
+            } catch (error) {
+                console.error("Lỗi khi mã hóa:", error);
+                alert("Có lỗi xảy ra khi mã hóa!");
+            }
+        }
+
+        async function decryptCaesar() {
+            const encryptedText = document.getElementById("encrypted_text").value;
+            const key = document.getElementById("key_decrypt").value;
+            if (!encryptedText || !key) {
+                alert("Vui lòng nhập văn bản và khóa!");
+                return;
+            }
+            try {
+                const response = await fetch("/api/caesar/decrypt", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ encrypted_text: encryptedText, key: key }),
+                });
+                const data = await response.json();
+                document.getElementById("decrypted_result").value = data.decrypted_message;
+            } catch (error) {
+                console.error("Lỗi khi giải mã:", error);
+                alert("Có lỗi xảy ra khi giải mã!");
+            }
+        }
+
+        function clearInputs() {
+            document.getElementById("plain_text").value = "";
+            document.getElementById("key").value = "";
+            document.getElementById("encrypted_text").value = "";
+            document.getElementById("key_decrypt").value = "";
+            document.getElementById("output_text").value = "";
+            document.getElementById("decrypted_result").value = "";
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5" style="max-width: 600px;">
+        <h2 class="text-center mb-4">Caesar Cipher</h2>
+
+        <!-- Mã hóa -->
+        <div class="mb-3">
+            <label for="plain_text" class="form-label">Văn bản cần mã hóa:</label>
+            <input type="text" id="plain_text" class="form-control" placeholder="Nhập văn bản" />
+        </div>
+
+        <div class="mb-3">
+            <label for="key" class="form-label">Khóa (số):</label>
+            <input type="number" id="key" class="form-control" placeholder="Nhập khóa" />
+        </div>
+
+        <button onclick="encryptCaesar()" class="btn btn-primary w-100">Mã hóa</button>
+
+        <div class="mt-4">
+            <label for="output_text" class="form-label">Kết quả mã hóa:</label>
+            <input type="text" id="output_text" readonly class="form-control" />
+        </div>
+
+        <hr class="my-5" />
+
+        <!-- Giải mã -->
+        <div class="mb-3">
+            <label for="encrypted_text" class="form-label">Văn bản mã hóa:</label>
+            <input type="text" id="encrypted_text" class="form-control" placeholder="Nhập văn bản mã hóa" />
+        </div>
+
+        <div class="mb-3">
+            <label for="key_decrypt" class="form-label">Khóa (số):</label>
+            <input type="number" id="key_decrypt" class="form-control" placeholder="Nhập khóa giải mã" />
+        </div>
+
+        <button onclick="decryptCaesar()" class="btn btn-success w-100">Giải mã</button>
+
+        <div class="mt-4">
+            <label for="decrypted_result" class="form-label">Kết quả giải mã:</label>
+            <input type="text" id="decrypted_result" readonly class="form-control" />
+        </div>
+
+        <div class="mt-4 d-grid gap-2">
+            <button onclick="clearInputs()" class="btn btn-secondary">Xóa tất cả</button>
+            <a href="/" class="btn btn-light" style="background-color: #f8d7da; color: #721c24;">
+                <i class="bi bi-arrow-left-circle"></i> Quay lại trang chủ
+            </a>
+        </div>
+    </div>
+</body>
+</html>
