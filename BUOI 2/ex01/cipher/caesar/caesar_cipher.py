@@ -9,9 +9,12 @@ class CaesarCipher:
         text = text.upper()
         encrypted_text = []
         for letter in text:
-            letter_index = self.alphabet.index(letter)
-            output_index = (letter_index + key) % alphabet_len
-            output_letter = self.alphabet[output_index]
+            if letter in self.alphabet:
+                letter_index = self.alphabet.index(letter)
+                output_index = (letter_index + key) % alphabet_len
+                output_letter = self.alphabet[output_index]
+            else:
+                output_letter = letter  # Giữ nguyên ký tự không nằm trong bảng chữ cái
             encrypted_text.append(output_letter)
         return "".join(encrypted_text)
 
@@ -20,8 +23,11 @@ class CaesarCipher:
         text = text.upper()
         decrypted_text = []
         for letter in text:
-            letter_index = self.alphabet.index(letter)
-            output_index = (letter_index - key) % alphabet_len
-            output_letter = self.alphabet[output_index]
+            if letter in self.alphabet:
+                letter_index = self.alphabet.index(letter)
+                output_index = (letter_index - key) % alphabet_len
+                output_letter = self.alphabet[output_index]
+            else:
+                output_letter = letter  # Giữ nguyên ký tự không nằm trong bảng chữ cái
             decrypted_text.append(output_letter)
         return "".join(decrypted_text)
