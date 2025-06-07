@@ -14,8 +14,10 @@ git push origin main
 git checkout -b lab04   
 git status
 
-cd .\lab-04\aes_rsa_socket\
+cd ex01\.\lab-04\aes_rsa_socket\
 pip install -r .\requirements.txt
 
 python .\server.py
 python .\client.py
+
+cd ex01\.\lab-04\dh_key_pair\
