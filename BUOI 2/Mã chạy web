@@ -1,0 +1,21 @@
+cd "BUOI 2/ex01"
+cd "ex01"
+python app.py
+http://127.0.0.1:2045/caesar
+http://127.0.0.1:2045
+git add .
+git commit -m "Thêm mã dự án ban đầu"
+git push -u origin main
+
+git add Transposition_Cipher.py
+git commit -m "Cập nhật file Transposition_Cipher.py"
+git push origin main
+
+git checkout -b lab04   
+git status
+
+cd .\lab-04\aes_rsa_socket\
+pip install -r .\requirements.txt
+
+python .\server.py
+python .\client.py
