@@ -17,7 +17,6 @@ def calculate_md5(input_string):
     except Exception as e:
         return f"Error calculating MD5: {e}"
 
-# Main logic
 input_string = input("Nhập chuỗi để băm: ")
 md5_hash = calculate_md5(input_string)
 print(f"Mã băm MD5 của chuỗi '{input_string}': {md5_hash}")

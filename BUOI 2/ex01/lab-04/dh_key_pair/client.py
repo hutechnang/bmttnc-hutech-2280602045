@@ -13,7 +13,6 @@ def derive_shared_secret(private_key, server_public_key):
     return shared_key
 
 def main():
-    # Load server's public key from file
     try:
         with open("server_public_key.pem", "rb") as f:
             server_public_key = serialization.load_pem_public_key(f.read())
@@ -24,16 +23,12 @@ def main():
         print(f"Error loading public key: {e}")
         return
 
-    # Get parameters from server's public key
     parameters = server_public_key.parameters()
 
-    # Generate client's key pair
     private_key, public_key = generate_client_key_pair(parameters)
 
-    # Derive shared secret
     shared_secret = derive_shared_secret(private_key, server_public_key)
 
-    # Print shared secret in hex
     print(f"Shared Secret: {shared_secret.hex()}")
 
 if __name__ == "__main__":

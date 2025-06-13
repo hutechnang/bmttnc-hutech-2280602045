@@ -2,31 +2,26 @@ def left_rotate(value, shift):
     return ((value << shift) | (value >> (32 - shift))) & 0xFFFFFFFF
 
 def md5(message):
-    # Khởi tạo biến ban đầu
     a = 0x67452301
     b = 0xEFCDAB89
     c = 0x98BADCFE
     d = 0x10325476
 
-    # Tiền xử lý chuỗi đầu vào
     original_length = len(message)
-    message += b'\x80'  # Thêm bit 1
+    message += b'\x80' 
     while (len(message) * 8) % 512 != 448:
-        message += b'\x00'  # Thêm các bit 0
-    message += original_length.to_bytes(8, byteorder='little')  # Thêm độ dài gốc (64-bit)
+        message += b'\x00' 
+    message += original_length.to_bytes(8, byteorder='little')  
 
-    # Chia thành các khối 512-bit
     for i in range(0, len(message), 64):
         block = message[i:i+64]
         words = [int.from_bytes(block[j:j+4], byteorder='little') for j in range(0, 64, 4)]
 
-        # Sao chép biến
         a0 = a
         b0 = b
         c0 = c
         d0 = d
 
-        # 64 bước xử lý
         for j in range(64):
             if j < 16:
                 f = (b0 & c0) | (~b0 & d0)
@@ -60,16 +55,13 @@ def md5(message):
                                      6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21][j])
             a0 = temp
 
-        # Cập nhật biến sau khi xử lý khối
         a = (a + a0) & 0xFFFFFFFF
         b = (b + b0) & 0xFFFFFFFF
         c = (c + c0) & 0xFFFFFFFF
         d = (d + d0) & 0xFFFFFFFF
 
-    # Trả về giá trị băm 128-bit dưới dạng chuỗi hex
     return f"{a:08x}{b:08x}{c:08x}{d:08x}"
 
-# Ví dụ sử dụng
 input_string = input("Nhập chuỗi để băm: ")
 md5_hash = md5(input_string.encode('utf-8'))
 print(f"Mã băm MD5 của chuỗi '{input_string}': {md5_hash}")
