@@ -1,0 +1,56 @@
+cd "BUOI 2/ex01"
+cd "ex01"
+python app.py
+http://127.0.0.1:2045/caesar
+http://127.0.0.1:2045
+git add .
+git commit -m "Thêm mã dự án ban đầu"
+git push -u origin main
+
+git add Transposition_Cipher.py
+git commit -m "Cập nhật file Transposition_Cipher.py"
+git push origin main
+
+git checkout -b lab04   
+git status
+
+cd ex01\.\lab-04\aes_rsa_socket\
+pip install -r .\requirements.txt
+
+python .\server.py
+python .\client.py
+
+git add .
+cd ex01\.\lab-04\websocket\
+git commit -m "[add] lab-04 websocket"
+
+hutech university
+dinh ngoc nang
+---
+python .\encrypt.py
+git add .
+git commit -m "[add] lab-05 base64"
+---
+cd .\lab-05\ssl\certificates\
+.\make-cert.bat
+cd ex01\.\lab-05\ssl
+git commit -m "[add] lab-05 ssl"
+---
+cd ex01\.\lab-05\blockchain\
+git add .
+git commit -m "[add] lab-05 blockchain"
+python ./test_blockchain.py
+---
+cd ex01\.\lab-05\img-hidden\
+python ./encrypt.py ./image.jpg ngocnang
+python ./decrypt.py ./encoded_image.png
+git add .
+git commit -m "[add] lab-05 img-hidden"
+git push origin lab05
+---
+cd ex01\.\lab-05\video-hidden\
+pip install -r requirements.txt
+python encrypt.py video.mp4 "ngocnang"
+python decrypt.py encoded_video.avi
+
+gộp lại thành 1 file code, chỉ sửa lỗi, không cập nhật code, không cần ghi chú giải thích #, áp dụng vào những lần sau tôi gửi ảnh tiếp
