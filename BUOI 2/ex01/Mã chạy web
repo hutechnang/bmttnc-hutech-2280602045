@@ -14,6 +14,15 @@ git push origin main
 git checkout -b lab04   
 git status
 
+
+
+pyuic5 -x ./ui/caesar.ui -o./ui/caesar.py
+chia thành 2 teminal
+python .\api.py (chạy ter1)
+python .\caesar_cipher.py (chạy ter2)
+python .\rsa_cipher.py
+python .\ecc_cipher.py
+
 cd ex01\.\lab-04\aes_rsa_socket\
 pip install -r .\requirements.txt
 
